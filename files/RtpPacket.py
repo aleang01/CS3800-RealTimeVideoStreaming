@@ -15,9 +15,6 @@ class RtpPacket:
         timestamp = int(time())
         header = bytearray(HEADER_SIZE)
 
-    # --------------
-    # TO COMPLETE
-    # --------------
     # Fill the header bytearray with RTP header fields
 
         header[0] = (version << 6) | (padding << 5) | (extension << 4) | cc
@@ -37,7 +34,6 @@ class RtpPacket:
         header[11] = ssrc & 0xFF
 
         self.header = header
-
     # Get the payload from the argument
         self.payload = payload
 

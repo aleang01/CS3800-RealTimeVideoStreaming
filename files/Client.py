@@ -143,9 +143,6 @@ class Client:
 
     def sendRtspRequest(self, requestCode):
         """Send RTSP request to the server."""
-        # -------------
-        # TO COMPLETE
-        # -------------
 
         # Setup request
         if requestCode == self.SETUP and self.state == self.INIT:
@@ -242,9 +239,6 @@ class Client:
             if self.sessionId == session:
                 if int(lines[0].split(' ')[1]) == 200:
                     if self.requestSent == self.SETUP:
-                        # -------------
-                        # TO COMPLETE
-                        # -------------
                         # Update RTSP state.
                         self.state = self.READY
 
@@ -265,9 +259,6 @@ class Client:
 
     def openRtpPort(self):
         """Open RTP socket binded to a specified port."""
-        # -------------
-        # TO COMPLETE
-        # -------------
         # Create a new datagram socket to receive RTP packets from the server
         self.rtpSocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
