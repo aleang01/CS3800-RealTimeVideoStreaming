@@ -34,7 +34,6 @@ class ServerWorker:
         while True:
             data = connSocket.recv(256)
             if data:
-                print("Data received:\n" + data.decode("utf-8"))
                 self.processRtspRequest(data.decode("utf-8"))
 
     def processRtspRequest(self, data):
@@ -126,9 +125,6 @@ class ServerWorker:
                     self.clientInfo['rtpSocket'].sendto(self.makeRtp(data, frameNumber), (address, port))
                 except:
                     print("Connection Error")
-                # print('-'*60)
-                # traceback.print_exc(file=sys.stdout)
-                # print('-'*60)
 
     def makeRtp(self, payload, frameNbr):
         """RTP-packetize the video data."""
@@ -150,10 +146,10 @@ class ServerWorker:
     def replyRtsp(self, code, seq):
         """Send RTSP reply to the client."""
         if code == self.OK_200:
-            # print("200 OK")
             reply = 'RTSP/1.0 200 OK\nCSeq: ' + seq + '\nSession: ' + str(self.clientInfo['session'])
             connSocket = self.clientInfo['rtspSocket'][0]
             connSocket.send(reply.encode())
+            print(reply)
 
         # Error messages
         elif code == self.FILE_NOT_FOUND_404:
