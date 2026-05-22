@@ -206,8 +206,8 @@ class Client:
 
         # Send the RTSP request using rtspSocket.
         self.rtspSocket.send(request.encode())
-        print(request)
-        
+        print("\n" + request + "\n")
+
     def recvRtspReply(self):
         """Receive RTSP reply from the server."""
         while True:
